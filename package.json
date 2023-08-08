@@ -1,0 +1,29 @@
+{
+  "name": "lemblocks",
+  "private": true,
+  "scripts": {
+    "start": "meteor run",
+    "test": "meteor test --once --driver-package meteortesting:mocha",
+    "test:watch": "set TEST_WATCH=1 && meteor test --driver-package meteortesting:mocha",
+    "test:client": "set TEST_WATCH=1 && set TEST_CLIENT=1 && meteor test --full-app --driver-package meteortesting:mocha",
+    "visualize": "meteor --production --extra-packages bundle-visualizer"
+  },
+  "meteor": {
+    "mainModule": {
+      "client": "client/main.js",
+      "server": "server/main.js"
+    },
+    "testModule": "tests/main.js"
+  },
+  "dependencies": {
+    "@babel/runtime": "^7.15.4",
+    "jquery": "^3.6.0",
+    "meteor-node-stubs": "^1.2.1"
+  },
+  "devDependencies": {
+    "@faker-js/faker": "8.0.2",
+    "chai": "4.3.7",
+    "chromedriver": "115.0.0",
+    "selenium-webdriver": "4.11.1"
+  }
+}

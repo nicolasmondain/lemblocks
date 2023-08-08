@@ -1,0 +1,44 @@
+<head>
+  <title>tech test template</title>
+</head>
+
+<body>
+  {{> appBlock}}
+</body>
+
+<template name="appBlock">
+  <x3d id="x3d">
+			<div class="controls">
+			{{# each color in colors}}
+				<div>
+					<input type="radio" id="{{color}}" name="color" value="{{color}}" {{isChecked color}}/>
+					<label for="color">{{color}}</label>
+				</div>
+			{{/each}}
+			<div>
+				<input type="range" id="transparency" name="transparency" min="0" max="1" step="0.1" value="0.1"/>
+				<label for="volume">transparency</label>
+			</div>
+		</div>
+    <scene>
+			<transform>
+				<shape>
+					<appearance>
+						<material diffuseColor="#4A9"></material>
+					</appearance>
+					<plane center='0,0,0' size="50 50"></plane>
+				</shape>
+			</transform>
+			{{#each block in blocks}}
+				<transform translation="{{block.x}} {{block.y}} {{block.z}}">
+					<shape data-type="box" data-id="{{block._id}}" data-index="{{@index}}">
+						<appearance>
+							<material diffuseColor="{{block.color}}" transparency="{{block.transparency}}"></material>
+						</appearance>
+						<box size="1 1 1"></box>
+					</shape>
+				</transform>
+			{{/each}}
+    </scene>
+  </x3d>
+</template>
